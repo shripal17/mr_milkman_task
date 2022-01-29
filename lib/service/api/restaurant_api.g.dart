@@ -6,6 +6,8 @@ part of 'restaurant_api.dart';
 // RetrofitGenerator
 // **************************************************************************
 
+// ignore_for_file: unnecessary_brace_in_string_interps
+
 class _RestaurantApi implements RestaurantApi {
   _RestaurantApi(this._dio, {this.baseUrl}) {
     baseUrl ??= 'https://923a3c00-1388-483e-adb9-d389f84b83c1.mock.pstmn.io/';
@@ -42,7 +44,7 @@ class _RestaurantApi implements RestaurantApi {
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<List<RestaurantMenuItem>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, 'menu/$restaurantId',
+                .compose(_dio.options, 'menu/${restaurantId}',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!

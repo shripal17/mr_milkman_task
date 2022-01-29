@@ -12,11 +12,11 @@ RestaurantMenuItem _$RestaurantMenuItemFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String? ?? "",
       price: json['price'] as int? ?? 0,
       image: json['image'] as String?,
-      rating: json['rating'] as int?,
       noOfRatings: json['noOfRatings'] as int?,
       highlightLabel: json['highlightLabel'] as String?,
       isRecommended: json['isRecommended'] as bool?,
       isVegetarian: json['isVegetarian'] as bool? ?? true,
+      rating: json['rating'] as int?,
     );
 
 Map<String, dynamic> _$RestaurantMenuItemToJson(RestaurantMenuItem instance) =>
@@ -25,9 +25,9 @@ Map<String, dynamic> _$RestaurantMenuItemToJson(RestaurantMenuItem instance) =>
       'name': instance.name,
       'price': instance.price,
       'image': instance.image,
-      'rating': instance.rating,
       'noOfRatings': instance.noOfRatings,
       'highlightLabel': instance.highlightLabel,
       'isRecommended': instance.isRecommended,
       'isVegetarian': instance.isVegetarian,
+      'rating': instance.rating,
     };

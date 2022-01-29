@@ -8,7 +8,8 @@ class RestaurantMenuItem {
   String name;
   int price;
   String? image;
-  int? rating;
+  @JsonKey(name: 'rating')
+  int? _rating;
   int? noOfRatings;
   String? highlightLabel;
   bool? isRecommended;
@@ -19,12 +20,19 @@ class RestaurantMenuItem {
     this.name = "",
     this.price = 0,
     this.image,
-    this.rating,
     this.noOfRatings,
     this.highlightLabel,
     this.isRecommended,
     this.isVegetarian = true,
-  });
+    int? rating,
+  }) {
+    if (rating != null) {
+      _rating = rating * 200;
+    }
+  }
+
+  // API gives us rating as random number from 0 to 1000, hence mapping it to 0-5
+  double get rating => (_rating ?? 0 / 100) / 2;
 
   factory RestaurantMenuItem.fromJson(Map<String, dynamic> json) => _$RestaurantMenuItemFromJson(json);
 
