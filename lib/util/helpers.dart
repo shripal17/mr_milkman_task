@@ -27,3 +27,11 @@ Future<bool?> showSimpleDialog(String title, {String? message, Widget? content, 
       ),
       barrierColor: Colors.black54,
     );
+
+void showSnackBar(BuildContext context, {required String content, String? actionLabel, Function()? onActionPress}) => ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(content, style: const TextStyle(fontSize: 14, color: Colors.white54)),
+        action: (actionLabel != null && onActionPress != null) ? SnackBarAction(label: actionLabel, onPressed: onActionPress, textColor: Colors.white) : null,
+      ),
+    );
+Widget get centeredProgress => const Align(child: CircularProgressIndicator(), alignment: Alignment.center);

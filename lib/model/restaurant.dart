@@ -39,13 +39,13 @@ class Restaurant {
     this.promos,
   }) {
     if (rating != null) {
-      _rating = rating * 200;
+      _rating = rating /** 200*/;
     }
     if (distance != null) {
-      _distance = distance * 100;
+      _distance = distance /* * 100*/;
     }
     if (deliveryTime != null) {
-      _deliveryTime = deliveryTime * 10;
+      _deliveryTime = deliveryTime /* * 10*/;
     }
   }
 
@@ -53,7 +53,7 @@ class Restaurant {
   double get rating => ((_rating ?? 0) / 100) / 2;
 
   // API gives us distance as random number from 0 to 1000, hence mapping it to 0-10
-  double get distance => (_distance ?? 0) / 100;
+  int get distance => ((_distance ?? 0) / 100).round();
 
   // API gives us deliveryTime as random number from 0 to 1000, hence mapping it to 0-100
   int get deliveryTime => ((_deliveryTime ?? 0) / 10).round();
