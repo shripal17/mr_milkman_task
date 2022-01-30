@@ -158,7 +158,7 @@ class _RestaurantsScreenState extends State<RestaurantsScreen> {
       final restaurantsResp = await restaurantService.getRestaurants();
       if (restaurantsResp.success && restaurantsResp.data != null) {
         s = restaurantsResp.data;
-        final imageUrls = restaurantsResp.data!.where((element) => element.images != null).toList().sublist(0, 4).map((e) => e.images!).toList().flatten();
+        final imageUrls = restaurantsResp.data!.where((element) => element.images != null).toList().sublist(0, 4).map((e) => e.images![0]).toList();
         await Future.wait(imageUrls.map((e) => precacheImage(PlatformCachedNetworkImageProvider(e), context)));
         return s;
       } else {
